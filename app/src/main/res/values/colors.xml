@@ -4,6 +4,7 @@
     <color name="text_black">#000000</color>
     <color name="text_brown">#d6cdc4</color>
     <color name="background">#444444</color>
+    <color name="buttons">#00c41a</color>
     <color name="icon_background">#e8ba2e</color>
     <color name="status_background">#bbada0</color>
     <color name="white">#ffffff</color>
