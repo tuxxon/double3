@@ -345,7 +345,7 @@ public class MainView extends View {
     //Renders the set of 16 background squares.
     private void drawBackgroundGrid(Canvas canvas) {
         Resources resources = getResources();
-        Drawable backgroundCell = resources.getDrawable(R.drawable.cell_rectangle);
+        Drawable backgroundCell = resources.getDrawable(R.drawable.cell_circle);
         // Outputting the game grid
         for (int xx = 0; xx < game.numSquaresX; xx++) {
             for (int yy = 0; yy < game.numSquaresY; yy++) {
@@ -540,23 +540,23 @@ public class MainView extends View {
 
     private int[] getCellRectangleIds() {
         int[] cellRectangleIds = new int[numCellTypes];
-        //cellRectangleIds[0] = R.drawable.cell_rectangle;
-        cellRectangleIds[0] = R.drawable.cell_rectangle_1;
-        cellRectangleIds[1] = R.drawable.cell_rectangle_2;
-        cellRectangleIds[2] = R.drawable.cell_rectangle_3;
-        cellRectangleIds[3] = R.drawable.cell_rectangle_6;
-        cellRectangleIds[4] = R.drawable.cell_rectangle_12;
-        cellRectangleIds[5] = R.drawable.cell_rectangle_24;
-        cellRectangleIds[6] = R.drawable.cell_rectangle_48;
-        cellRectangleIds[7] = R.drawable.cell_rectangle_96;
-        cellRectangleIds[8] = R.drawable.cell_rectangle_192;
-        cellRectangleIds[9] = R.drawable.cell_rectangle_384;
-        cellRectangleIds[10] = R.drawable.cell_rectangle_768;
-        cellRectangleIds[11] = R.drawable.cell_rectangle_1536;
-        cellRectangleIds[12] = R.drawable.cell_rectangle_3072;
-        cellRectangleIds[13] = R.drawable.cell_rectangle_6144;
+        //cellRectangleIds[0] = R.drawable.cell_circle;
+        cellRectangleIds[0] = R.drawable.cell_circle_1;
+        cellRectangleIds[1] = R.drawable.cell_circle_2;
+        cellRectangleIds[2] = R.drawable.cell_circle_3;
+        cellRectangleIds[3] = R.drawable.cell_circle_6;
+        cellRectangleIds[4] = R.drawable.cell_circle_12;
+        cellRectangleIds[5] = R.drawable.cell_circle_24;
+        cellRectangleIds[6] = R.drawable.cell_circle_48;
+        cellRectangleIds[7] = R.drawable.cell_circle_96;
+        cellRectangleIds[8] = R.drawable.cell_circle_192;
+        cellRectangleIds[9] = R.drawable.cell_circle_384;
+        cellRectangleIds[10] = R.drawable.cell_circle_768;
+        cellRectangleIds[11] = R.drawable.cell_circle_1536;
+        cellRectangleIds[12] = R.drawable.cell_circle_3072;
+        cellRectangleIds[13] = R.drawable.cell_circle_6144;
         for (int xx = 13; xx < cellRectangleIds.length; xx++) {
-            cellRectangleIds[xx] = R.drawable.cell_rectangle_6144;
+            cellRectangleIds[xx] = R.drawable.cell_circle_6144;
         }
         return cellRectangleIds;
     }

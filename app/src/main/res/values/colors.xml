@@ -6,6 +6,7 @@
     <color name="background">#444444</color>
     <color name="icon_background">#e8ba2e</color>
     <color name="status_background">#bbada0</color>
+    <color name="white">#ffffff</color>
 
     <color name="actionBar">#1b1b1b</color>
     <color name="statusBar">#0e0e0e</color>
@@ -19,7 +20,7 @@
     <color name="color96">#ce007c</color>
     <color name="color192">#ff5518</color>
     <color name="color384">#29d7a4</color>
-    <color name="color768">#f5e612</color>
+    <color name="color768">#f09328</color>
     <color name="color1536">#f700dd</color>
     <color name="color3072">#6608c2</color>
     <color name="color6144">#24009c</color>

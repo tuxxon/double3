@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         numberButtonX = findViewById(R.id.number_buttonX);
         numberButtonY = findViewById(R.id.number_buttonY);
 
-        numberButtonX.setRange(2, 9);
+        numberButtonX.setRange(2, 8);
         numberButtonX.setOnClickListener((ElegantNumberButton.OnClickListener) view -> {
             String number = numberButtonX.getNumber();
         });
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         */
 
-        numberButtonY.setRange(2, 9);
+        numberButtonY.setRange(2, 8);
         numberButtonY.setOnClickListener((ElegantNumberButton.OnClickListener) view -> {
             String number = numberButtonY.getNumber();
         });
@@ -83,6 +83,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_subscriptions: goToYoutube(); break;
             default: break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void goToPlay() {

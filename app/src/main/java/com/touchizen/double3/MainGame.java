@@ -262,7 +262,7 @@ public class MainGame {
         );
         mContext.startActivity(intent);
         ((Activity)mContext).overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        ((Activity) mContext).finish();
+        ((Activity)mContext).finish();
     }
 
     void shareScreen(@NonNull Bitmap bitmap) {

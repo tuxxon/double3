@@ -54,7 +54,7 @@
             app:backGroundColor="@color/colorPrimary"
             app:textSize="12sp"
             app:initialNumber="4"
-            app:finalNumber="9"
+            app:finalNumber="8"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <LinearLayout
@@ -80,7 +80,7 @@
             app:textSize="12sp"
             android:layout_marginStart="10dp"
             app:initialNumber="4"
-            app:finalNumber="9"
+            app:finalNumber="8"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
