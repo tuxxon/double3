@@ -226,7 +226,7 @@ public class MainGame {
 
     void revertUndoState() {
         if (canUndo) {
-            undoSound.play();;
+            undoSound.play();
             canUndo = false;
             aGrid.cancelAnimations();
             grid.revertTiles();
