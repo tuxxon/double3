@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="high_score">HÖCHSTPUNKTZAHL</string>
+    <string name="score">PUNKTE</string>
+    <string name="instructions">Wische. 1 + 2 = 3, 3+3=6, Punktzahl höher.</string>
+    <string name="you_win">Gewonnen!</string>
+    <string name="game_over">Verloren!</string>
+    <string name="go_on">Berühren um fortzufahren</string>
+    <string name="for_now">Fürs erste…</string>
+    <string name="endless">"Endlosmodus"</string>
+
+    <!-- Confirmation dialog-->
+    <string name="reset">Zurücksetzen</string>
+    <string name="continue_game">Abbrechen</string>
+    <string name="reset_dialog_title">Spiel zurücksetzen?</string>
+    <string name="reset_dialog_message">Sind Sie sicher, dass Sie das Spiel zurücksetzen möchten?</string>
+
+    <string name="share_message">Hallo. Ich spiele das% 1 $ s-Spiel, also werde ich es vorstellen, weil es Spaß macht. Meine höchste Punktzahl ist% 2 $ s bei 4x4. Bitte herunterladen und spielen. https://play.google.com/store/apps/details?id=%3$s</string>
+    <string name="choose_one">Wähle ein</string>
+</resources>

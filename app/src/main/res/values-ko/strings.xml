@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">더블3</string>
+    <string name="header">더블3</string>
+
+    <string name="high_score">최고점수</string>
+    <string name="score">점수</string>
+    <string name="instructions"> 1 + 2 = 3 이거나, 동일한 수(3 + 3= 6)이거나, 좌,우,위,아래 로 움직이셔서, 높은 점수를 획득하세요.</string>
+    <string name="you_win">게임승리!</string>
+    <string name="game_over">게임종료!</string>
+    <string name="go_on">계속</string>
+    <string name="for_now">지금은…</string>
+    <string name="endless">"무한" 모드</string>
+
+    <!-- Confirmation dialog-->
+    <string name="reset">새로운 게임</string>
+    <string name="continue_game">취소</string>
+    <string name="reset_dialog_title">확인</string>
+    <string name="reset_dialog_message">새로운 게임을 시작하시겠습니까?</string>
+    <string name="share_message">안녕하세요. %1$s 게임을 하고 있는데, 재미있어서 소개할께요. 제 최고점수는 4x4에서 %2$s 인데요. 다운로드 받아 해보세요. https://play.google.com/store/apps/details?id=%3$s  </string>
+    <string name="choose_one"> 선택하세요 </string>
+</resources>

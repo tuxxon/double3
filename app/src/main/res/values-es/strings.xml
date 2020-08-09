@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="high_score">PUNTUACIÓN ALTA</string>
+    <string name="score">PUNTAJE</string>
+    <string name="instructions">Deslice para mover. 2 + 2 = 4. Puntaje más alto</string>
+    <string name="you_win">¡Te Ganas!</string>
+    <string name="game_over">¡Juego Terminado!</string>
+    <string name="go_on">Pulsa Para Continuar</string>
+    <string name="for_now">Por ahora</string>
+    <string name="endless">Modo \"Infinito\"</string>
+
+    <!-- Confirmation dialog -->
+    <string name="continue_game">Cancelar</string>
+    <string name="reset">Reajustar</string>
+    <string name="reset_dialog_title">¿Reajutar el juego?</string>
+    <string name="reset_dialog_message">¿Seguro que quieres a reajustar el juego?</string>
+    <string name="share_message">Hola. Estoy jugando al juego% 1 $ s, así que lo presentaré porque es divertido. Mi puntuación más alta es% 2 $ s en 4x4. Descárguelo y reprodúzcalo. https://play.google.com/store/apps/details?id=%3$s</string>
+    <string name="choose_one">Выбери один</string>
+</resources>
