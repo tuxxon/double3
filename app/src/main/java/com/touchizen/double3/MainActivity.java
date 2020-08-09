@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         playIntent.putExtra(PlayActivity.ROW, row);
         playIntent.putExtra(PlayActivity.COL, col);
         startActivity(playIntent);
-        overridePendingTransition(R.anim.animation_leave, R.anim.animation_enter);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         finish();
         /*
         final Intent playIntent = new Intent(getApplicationContext(), PlayActivity.class);

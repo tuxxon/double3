@@ -261,7 +261,7 @@ public class MainGame {
                 MainActivity.class
         );
         mContext.startActivity(intent);
-        ((Activity)mContext).overridePendingTransition(R.anim.animation_leave, R.anim.animation_enter);
+        ((Activity)mContext).overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         ((Activity) mContext).finish();
     }
 
