@@ -171,7 +171,7 @@ public class MainView extends View {
 
     private void drawCellText(Canvas canvas, int value) {
         int textShiftY = centerText();
-        if (value >= 6) {
+        if (value >= 3) {
             paint.setColor(getResources().getColor(R.color.text_white));
         } else {
             paint.setColor(getResources().getColor(R.color.text_black));
