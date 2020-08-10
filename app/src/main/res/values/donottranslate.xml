@@ -2,4 +2,9 @@
 <resources>
     <!--string name="app_name">Double 3</string>
     <string name="header">Double 3</string-->
+    <string name="banner_ad_unit_id">ca-app-pub-7579081712096708/3493267779</string>
+
+    <!-- sample app_id for testing a banner ad >
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string-->
+
 </resources>

@@ -10,9 +10,15 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.touchizen.double3.transition3d.ActivitySwitcher;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -26,6 +32,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ImageButton rateButton;
     public ImageButton subsButton;
 
+    /**
+     *   interstialAd with admob.
+     */
+    private static final String AD_UNIT_ID = "ca-app-pub-7579081712096708/8544916920";
+    private InterstitialAd interstitialAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initXY();
         initButtons();
+        //initAd();
     }
 
     private void initXY() {
@@ -66,6 +79,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         playButton.setOnClickListener(this);
         rateButton.setOnClickListener(this);
         subsButton.setOnClickListener(this);
+    }
+
+   private void initAd() {
+       // Initialize the Mobile Ads SDK.
+       MobileAds.initialize(this, new OnInitializationCompleteListener() {
+           @Override
+           public void onInitializationComplete(InitializationStatus initializationStatus) {}
+       });
+
+       // Create the InterstitialAd and set the adUnitId.
+       interstitialAd = new InterstitialAd(this);
+       // Defined in res/values/strings.xml
+       interstitialAd.setAdUnitId(AD_UNIT_ID);
+
+       interstitialAd.setAdListener(
+               new AdListener() {
+                   @Override
+                   public void onAdLoaded() {
+                       Toast.makeText(MainActivity.this, "onAdLoaded()", Toast.LENGTH_SHORT).show();
+                   }
+
+                   @Override
+                   public void onAdFailedToLoad(LoadAdError loadAdError) {
+                       String error =
+                               String.format(
+                                       "domain: %s, code: %d, message: %s",
+                                       loadAdError.getDomain(), loadAdError.getCode(), loadAdError.getMessage());
+                       Toast.makeText(
+                               MainActivity.this, "onAdFailedToLoad() with error: " + error, Toast.LENGTH_SHORT)
+                               .show();
+                   }
+
+                   @Override
+                   public void onAdClosed() {
+                       // startGame();
+                   }
+               });
+   }
+
+    private void showInterstitial() {
+        // Show the ad if it's ready. Otherwise toast and restart the game.
+        if (interstitialAd != null && interstitialAd.isLoaded()) {
+            interstitialAd.show();
+        } else {
+            Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
+            //startGame();
+        }
     }
 
     @Override
