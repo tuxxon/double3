@@ -12,6 +12,7 @@
         android:id="@+id/mainview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/ad_view"
         >
     </com.touchizen.double3.MainView>
 
