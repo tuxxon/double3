@@ -15,7 +15,7 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-7579081712096708~5034591919"/>
 
-        <activity android:name=".PlayActivity" />
+        <activity android:name=".PlayActivity"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">

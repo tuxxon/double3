@@ -16,4 +16,8 @@
     <string name="reset_dialog_message">Дали сте сигурни дека сакате да ја ресетирате играта?</string>
     <string name="share_message">Здраво. Ја играм играта% 1 $ s, па ќе ја воведам затоа што е забавно. Мојот највисок резултат е% 2 $ s на 4x4. Ве молиме преземете и пуштете ја. https://play.google.com/store/apps/details?id=%3$s</string>
     <string name="choose_one">Выбери один</string>
+    <string name="yourname">Како се викаш?</string>
+    <string name="profile">Профил</string>
+    <string name="confirm">Потврди</string>
+
 </resources>

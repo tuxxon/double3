@@ -12,12 +12,16 @@
     <string name="for_now">For now…</string>
     <string name="endless">"Endless" Mode</string>
 
+
     <!-- Confirmation dialog-->
     <string name="reset">Reset</string>
     <string name="continue_game">Cancel</string>
     <string name="reset_dialog_title">Reset game?</string>
     <string name="reset_dialog_message">Are you sure you wish to reset the game?</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="yourname">What is your name?</string>
+    <string name="profile">Profile</string>
+    <string name="confirm">Confirm</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

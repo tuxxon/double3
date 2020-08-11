@@ -1,13 +1,17 @@
 package com.touchizen.double3;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -42,6 +46,8 @@ public class MainView extends View {
     public int sXShare;
     public int sXScreenShare;
     public int sXHome;
+    public int sXProfile;
+    public int sYProfile;
     public int iconSize;
     //Misc
     boolean refreshLastTime = true;
@@ -63,6 +69,7 @@ public class MainView extends View {
     private int iconPaddingSize;
     //Assets
     private Drawable backgroundRectangle;
+    private Drawable backgroundRectangleEdge;
     private Drawable lightUpRectangle;
     private Drawable fadeRectangle;
     private Bitmap background = null;
@@ -94,6 +101,7 @@ public class MainView extends View {
         try {
             //Getting assets
             backgroundRectangle = resources.getDrawable(R.drawable.background_rectangle);
+            backgroundRectangleEdge = resources.getDrawable(R.drawable.background_rectangle_edge);
             lightUpRectangle = resources.getDrawable(R.drawable.light_up_rectangle);
             fadeRectangle = resources.getDrawable(R.drawable.fade_rectangle);
             this.setBackgroundColor(resources.getColor(R.color.background));
@@ -174,7 +182,7 @@ public class MainView extends View {
         if (value >= 3) {
             paint.setColor(getResources().getColor(R.color.text_white));
         } else {
-            paint.setColor(getResources().getColor(R.color.text_black));
+            paint.setColor(getResources().getColor(R.color.text_white));
         }
         canvas.drawText("" + value, cellSize / 2, cellSize / 2 - textShiftY, paint);
     }
@@ -311,6 +319,7 @@ public class MainView extends View {
                 sYIcons + iconSize
         );
 
+        /*
         drawDrawable(canvas,
                 getResources().getDrawable(R.drawable.ic_baseline_home_48),
                 sXHome + iconPaddingSize,
@@ -318,16 +327,45 @@ public class MainView extends View {
                 sXHome + iconSize - iconPaddingSize,
                 sYIcons + iconSize - iconPaddingSize
         );
+         */
+    }
+
+    private void drawProfileButton(Canvas canvas) {
+
+        int textShiftY = centerText();
+        int headerStartY = sYAll - textShiftY-20;
+
+        drawDrawable(canvas,
+                getResources().getDrawable(R.drawable.ic_baseline_account_circle_64),
+                startingX + 90,
+                headerStartY,
+                startingX + 90 + 128,
+                headerStartY +128
+        );
+
     }
 
     private void drawHeader(Canvas canvas) {
-        paint.setTextSize(headerTextSize);
-        paint.setColor(getResources().getColor(R.color.text_black));
-        paint.setTextAlign(Paint.Align.LEFT);
-        int textShiftY = centerText() * 2;
-        int headerStartY = sYAll - textShiftY - 230;
-        //int headerStartY = sYAll - textShiftY;
-        canvas.drawText(getResources().getString(R.string.header), startingX, headerStartY, paint);
+        if (game.numSquaresX < 3) return;
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String strProfile = settings.getString(PlayActivity.PROFILE,null);
+        if (strProfile == null) {
+            drawProfileButton(canvas);
+        }
+        else {
+            int textSize = (int) headerTextSize;
+            paint.setTextSize(textSize);
+            paint.setColor(getResources().getColor(R.color.text_white));
+            paint.setTextAlign(Paint.Align.LEFT);
+            int textShiftY = centerText();
+            int headerStartY = sYAll - textShiftY+30;
+            canvas.drawText(strProfile, startingX+30, headerStartY, paint);
+
+            paint.setTextSize(textSize*2/3);
+            paint.setColor(getResources().getColor(R.color.text_brown));
+            canvas.drawText("     in Double 3", startingX+30, headerStartY+textSize+5, paint);
+        }
     }
 
     private void drawInstructions(Canvas canvas) {
@@ -504,12 +542,12 @@ public class MainView extends View {
     private void createBackgroundBitmap(int width, int height) {
         background = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(background);
-        //drawHeader(canvas);
+        drawHeader(canvas);
         drawNewGameButton(canvas, false);
         drawUndoButton(canvas);
         drawShareButton(canvas);
         drawScreenShareButton(canvas);
-        drawHomeButton(canvas);
+        //drawHomeButton(canvas);
         drawBackground(canvas);
         drawBackgroundGrid(canvas);
         if (showHelp) drawInstructions(canvas);
@@ -628,7 +666,7 @@ public class MainView extends View {
         cellTextSize = textSize;
         titleTextSize = textSize / 3;
         bodyTextSize = (int) (textSize / 1.5);
-        headerTextSize = textSize * 2;
+        headerTextSize = ((PlayActivity)getContext()).getActionBarHeight()/2;
         textPaddingSize = (int) (textSize / 3);
         iconPaddingSize = (int) (textSize / 5);
 
@@ -648,10 +686,20 @@ public class MainView extends View {
 
         sYIcons = (startingY + eYAll) / 2 - iconSize / 2;
         sXNewGame = (endingX - iconSize);
-        sXUndo = sXNewGame - iconSize * 3 / 2 - iconPaddingSize;
-        sXShare = sXUndo - iconSize * 3 / 2 - iconPaddingSize;
-        sXScreenShare = sXShare - iconSize * 3 / 2 - iconPaddingSize;
-        sXHome = sXScreenShare - iconSize * 3 / 2 - iconPaddingSize;
+        if (game.numSquaresX < 3) {
+            sXUndo = sXNewGame - iconSize * (int) 2.6 / 2 - iconPaddingSize;
+            sXShare = sXUndo - iconSize * (int) 2.6 / 2 - iconPaddingSize;
+            sXScreenShare = sXShare - iconSize * (int)2.6 / 2 - iconPaddingSize;
+            sXHome = sXScreenShare - iconSize * (int)2.6 / 2 - iconPaddingSize;
+        }
+        else {
+            sXUndo = sXNewGame - iconSize * 3 / 2 - iconPaddingSize;
+            sXShare = sXUndo - iconSize * 3 / 2 - iconPaddingSize;
+            sXScreenShare = sXShare - iconSize * 3 / 2 - iconPaddingSize;
+            sXHome = sXScreenShare - iconSize * 3 / 2 - iconPaddingSize;
+        }
+        sXProfile = startingX + 90;
+        sYProfile = sYAll - centerText() - 20;
 
         resyncTime();
     }

@@ -1,11 +1,15 @@
 package com.touchizen.double3;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
-//import com.touchizen.double3.base.R;
+import android.widget.EditText;
 
 class InputListener implements View.OnTouchListener {
 
@@ -51,8 +55,8 @@ class InputListener implements View.OnTouchListener {
                 beganOnIcon =   iconPressed(mView.sXNewGame, mView.sYIcons) ||
                                 iconPressed(mView.sXUndo, mView.sYIcons) ||
                                 iconPressed(mView.sXShare, mView.sYIcons) ||
-                                iconPressed(mView.sXScreenShare, mView.sYIcons) ||
-                                iconPressed(mView.sXHome, mView.sYIcons);
+                                iconPressed(mView.sXScreenShare, mView.sYIcons); // ||
+                                //iconPressed(mView.sXHome, mView.sYIcons);
                 return true;
             case MotionEvent.ACTION_MOVE:
                 x = event.getX();
@@ -125,29 +129,20 @@ class InputListener implements View.OnTouchListener {
                 if (!hasMoved) {
                     if (iconPressed(mView.sXNewGame, mView.sYIcons)) {
                         if (!mView.game.gameLost()) {
-                            new AlertDialog.Builder(mView.getContext())
-                                    .setPositiveButton(R.string.reset, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            mView.game.newGame();
-                                        }
-                                    })
-                                    .setNegativeButton(R.string.continue_game, null)
-                                    .setTitle(R.string.reset_dialog_title)
-                                    .setMessage(R.string.reset_dialog_message)
-                                    .show();
+                            showResetDialog();
                         } else {
                             mView.game.newGame();
                         }
-
                     } else if (iconPressed(mView.sXUndo, mView.sYIcons)) {
                         mView.game.revertUndoState();
                     } else if (iconPressed(mView.sXShare, mView.sYIcons)) {
                         mView.game.share();
                     } else if (iconPressed(mView.sXScreenShare, mView.sYIcons)) {
                         mView.game.shareScreen(mView.screenShot(mView));
-                    } else if (iconPressed(mView.sXHome, mView.sYIcons)) {
-                        mView.game.goHome();
+                    //} else if (iconPressed(mView.sXHome, mView.sYIcons)) {
+                    //    mView.game.goHome();
+                    } else if (profilePressed(mView.sXProfile, mView.sYProfile)) {
+                        showProfileDialog();
                     }
 
                 else if (isTap(2) && inRange(mView.startingX, x, mView.endingX)
@@ -174,5 +169,62 @@ class InputListener implements View.OnTouchListener {
 
     private boolean isTap(int factor) {
         return pathMoved() <= mView.iconSize * mView.iconSize * factor;
+    }
+
+    private boolean profilePressed(int sx, int sy) {
+        return isTap(1) && inRange(sx, x, sx + 128)
+                && inRange(sy, y, sy + 128);
+    }
+
+    private void showResetDialog() {
+        new AlertDialog.Builder(mView.getContext())
+                .setPositiveButton(R.string.reset, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mView.game.newGame();
+                    }
+                })
+                .setNegativeButton(R.string.continue_game, null)
+                .setTitle(R.string.reset_dialog_title)
+                .setMessage(R.string.reset_dialog_message)
+                .show();
+    }
+
+    private void showProfileDialog() {
+        AlertDialog.Builder profileDlg = new AlertDialog.Builder(mView.getContext());
+
+        profileDlg.setTitle("Profile");
+        profileDlg.setMessage("What is your name?");
+
+        final EditText et = new EditText(mView.getContext());
+        profileDlg.setView(et);
+
+        profileDlg.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                String value = et.getText().toString();
+                if (value != null && !value.isEmpty()) {
+                    SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mView.getContext());
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putString(PlayActivity.PROFILE, value);
+                    editor.apply();
+                    mView.getContext().startActivity(new Intent(mView.getContext(), PlayActivity.class));
+                    ((Activity)mView.getContext()).finish();
+                }
+                dialog.dismiss();
+                // Event
+            }
+        });
+
+        profileDlg.setNegativeButton(mView.getContext().getString(R.string.continue_game), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                // Event
+            }
+        });
+
+        profileDlg.show();
     }
 }

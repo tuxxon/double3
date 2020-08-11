@@ -2,8 +2,8 @@ package com.touchizen.double3;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,15 +12,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.auth.api.Auth;
@@ -42,7 +40,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class PlayActivity extends AppCompatActivity {
+public class PlayActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String WIDTH = "width";
     public static final String HEIGHT = "height";
@@ -55,6 +53,7 @@ public class PlayActivity extends AppCompatActivity {
     private static final String UNDO_GAME_STATE = "undo game state";
     public static final String ROW = "_row";
     public static final String COL = "_col";
+    public static final String PROFILE = "profile";
     private static final String NO_LOGIN_PROMPT = "no_login_prompt";
 
     private static final int RC_SIGN_IN = 9001;
@@ -62,11 +61,14 @@ public class PlayActivity extends AppCompatActivity {
     private boolean firstLoginAttempt = false;
     private int mRow = 0;
     private int mCol = 0;
+    private int actionBarHeight = 0;
 
     private MainView view;
 
     /* Var for admob */
     private AdView adView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +76,8 @@ public class PlayActivity extends AppCompatActivity {
 
         initView(savedInstanceState);
         initAd();
+
+        initActionbarHeight();
     }
 
     @Override
@@ -137,7 +141,7 @@ public class PlayActivity extends AppCompatActivity {
         mRow = getIntent().getIntExtra(ROW,4);
         mCol = getIntent().getIntExtra(COL,4);
 
-        setTitle(getString(R.string.app_name));
+        setActionBar();
         view = (MainView) findViewById(R.id.mainview);
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         view.hasSaveState = settings.getBoolean("save_state", false);
@@ -179,19 +183,31 @@ public class PlayActivity extends AppCompatActivity {
 
     }
 
-    public void setTitle(String title){
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    private void initActionbarHeight() {
+        // action bar height
+        //int actionBarHeight = 0;
+        final TypedArray styledAttributes = getTheme().obtainStyledAttributes(
+                new int[] { android.R.attr.actionBarSize }
+        );
+        actionBarHeight = (int) styledAttributes.getDimension(0, 0);
+        styledAttributes.recycle();
+    }
 
-        TextView textView = new TextView(this);
-        textView.setText(title);
-        textView.setTextSize(30);
-        textView.setTypeface(null, Typeface.BOLD);
-        textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(getResources().getColor(R.color.white));
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(textView);
+    public int getActionBarHeight() {
+        return actionBarHeight;
+    }
+
+    public void setActionBar(){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar!= null) {
+            actionBar.setHomeButtonEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            actionBar.setCustomView(R.layout.actionbar_layout);
+            ImageButton btnHome = actionBar.getCustomView().findViewById(R.id.button_home);
+            btnHome.setOnClickListener(this);
+        }
     }
 
     private void save() {
@@ -327,8 +343,7 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public void shareBitmap(@NonNull Bitmap bitmap)
-    {
+    public void shareBitmap(@NonNull Bitmap bitmap) {
         //---Save bitmap to external cache directory---//
         //get cache directory
         File cachePath = new File(getExternalCacheDir(), "my_images/");
@@ -363,5 +378,20 @@ public class PlayActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_STREAM, myImageFileUri);
         intent.setType("image/png");
         startActivity(Intent.createChooser(intent, getString(R.string.choose_one)));
+    }
+
+    public void goHome() {
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_home: goHome(); break;
+            default: break;
+        }
     }
 }

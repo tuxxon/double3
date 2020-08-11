@@ -16,4 +16,8 @@
     <string name="reset_dialog_message">Czy na pewno chcesz wyzerować grę i zacząć od nowa?</string>
     <string name="share_message">Dzień dobry. Gram w grę% 1 $ s, więc przedstawię ją, ponieważ jest fajna. Mój najwyższy wynik to% 2 $ s na 4x4. Pobierz i odtwórz. https://play.google.com/store/apps/details?id=%3$s</string>
     <string name="choose_one">Выбери один</string>
+    <string name="yourname">Jak masz na imię?</string>
+    <string name="profile">Profil</string>
+    <string name="confirm">Potwierdzać</string>
+
 </resources>

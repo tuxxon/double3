@@ -16,4 +16,8 @@
     <string name="reset_dialog_message">Tem certeza de que deseja resetar o jogo?</string>
     <string name="share_message">Olá. Estou jogando o jogo% 1 $ s, então vou apresentá-lo porque é divertido. Minha pontuação mais alta é% 2 $ s em 4x4. Faça o download e jogue. https://play.google.com/store/apps/details?id=%3$s</string>
     <string name="choose_one">Выбери один</string>
+    <string name="yourname">Qual é o seu nome?</string>
+    <string name="profile">Perfil</string>
+    <string name="confirm">confirme</string>
+
 </resources>

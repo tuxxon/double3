@@ -16,4 +16,8 @@
     <string name="reset_dialog_message">Вы уверены, что хотите начать сначала?</string>
     <string name="share_message">Привет. Я играю в игру% 1 $ s, поэтому представлю ее, потому что это весело. Моя наивысшая оценка -% 2 $ s на 4x4. Пожалуйста, скачайте и играйте. https://play.google.com/store/apps/details?id=%3$s</string>
     <string name="choose_one">Выбери один</string>
+    <string name="yourname">Как тебя зовут?</string>
+    <string name="profile">Профиль</string>
+    <string name="confirm">Подтверждение</string>
+
 </resources>

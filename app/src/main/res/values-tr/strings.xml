@@ -16,4 +16,8 @@
     <string name="reset_dialog_message">Sıfırlamak istediğinize emin misiniz?</string>
     <string name="share_message">Merhaba. % 1 $ s oyununu oynuyorum, bu yüzden onu tanıtacağım çünkü eğlenceli. En yüksek puanım 4x4 \'te% 2 $ s. Lütfen indirin ve oynatın. https://play.google.com/store/apps/details?id=%3$s</string>
     <string name="choose_one">birini seç</string>
+    <string name="yourname">Adınız ne?</string>
+    <string name="profile">Profil</string>
+    <string name="confirm">Onaylamak</string>
+
 </resources>

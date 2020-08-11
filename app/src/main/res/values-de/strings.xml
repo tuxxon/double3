@@ -14,7 +14,10 @@
     <string name="continue_game">Abbrechen</string>
     <string name="reset_dialog_title">Spiel zurücksetzen?</string>
     <string name="reset_dialog_message">Sind Sie sicher, dass Sie das Spiel zurücksetzen möchten?</string>
-
     <string name="share_message">Hallo. Ich spiele das% 1 $ s-Spiel, also werde ich es vorstellen, weil es Spaß macht. Meine höchste Punktzahl ist% 2 $ s bei 4x4. Bitte herunterladen und spielen. https://play.google.com/store/apps/details?id=%3$s</string>
     <string name="choose_one">Wähle ein</string>
+    <string name="yourname">Wie heißen Sie?</string>
+    <string name="profile">Profil</string>
+    <string name="confirm">bestätigen</string>
+
 </resources>
