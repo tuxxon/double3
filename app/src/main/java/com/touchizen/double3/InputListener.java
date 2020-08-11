@@ -193,13 +193,13 @@ class InputListener implements View.OnTouchListener {
     private void showProfileDialog() {
         AlertDialog.Builder profileDlg = new AlertDialog.Builder(mView.getContext());
 
-        profileDlg.setTitle("Profile");
-        profileDlg.setMessage("What is your name?");
+        profileDlg.setTitle(mView.getContext().getString(R.string.profile));
+        profileDlg.setMessage(mView.getContext().getString(R.string.yourname));
 
         final EditText et = new EditText(mView.getContext());
         profileDlg.setView(et);
 
-        profileDlg.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+        profileDlg.setPositiveButton(mView.getContext().getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
