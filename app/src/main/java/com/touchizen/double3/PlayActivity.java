@@ -342,6 +342,11 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void shareScreenshot(){
+        View rootView = getWindow().getDecorView();
+        shareBitmap( Utils.screenShot(rootView) );
+    }
+
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void shareBitmap(@NonNull Bitmap bitmap) {
         //---Save bitmap to external cache directory---//

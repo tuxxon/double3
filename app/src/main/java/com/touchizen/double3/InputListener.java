@@ -138,9 +138,7 @@ class InputListener implements View.OnTouchListener {
                     } else if (iconPressed(mView.sXShare, mView.sYIcons)) {
                         mView.game.share();
                     } else if (iconPressed(mView.sXScreenShare, mView.sYIcons)) {
-                        mView.game.shareScreen(mView.screenShot(mView));
-                    //} else if (iconPressed(mView.sXHome, mView.sYIcons)) {
-                    //    mView.game.goHome();
+                        ((PlayActivity)mView.getContext()).shareScreenshot();
                     } else if (profilePressed(mView.sXProfile, mView.sYProfile)) {
                         showProfileDialog();
                     }

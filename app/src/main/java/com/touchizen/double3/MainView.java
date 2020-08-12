@@ -361,10 +361,6 @@ public class MainView extends View {
             int textShiftY = centerText();
             int headerStartY = sYAll - textShiftY+30;
             canvas.drawText(strProfile, startingX+30, headerStartY, paint);
-
-            paint.setTextSize(textSize*2/3);
-            paint.setColor(getResources().getColor(R.color.text_brown));
-            canvas.drawText("     in Double 3", startingX+30, headerStartY+textSize+5, paint);
         }
     }
 

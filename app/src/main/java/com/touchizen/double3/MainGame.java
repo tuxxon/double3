@@ -265,10 +265,6 @@ public class MainGame {
         ((Activity)mContext).finish();
     }
 
-    void shareScreen(@NonNull Bitmap bitmap) {
-        ((PlayActivity)mContext).shareBitmap(bitmap);
-    }
-
     boolean gameWon() {
         return (gameState > 0 && gameState % 2 != 0);
     }
