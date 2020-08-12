@@ -52,7 +52,7 @@
             android:layout_width="194dp"
             android:layout_marginStart="10dp"
             app:backGroundColor="@color/colorPrimary"
-            app:textSize="12sp"
+            app:textSize="8sp"
             app:initialNumber="4"
             app:finalNumber="8"
             android:layout_height="wrap_content" />
@@ -77,7 +77,7 @@
             android:id="@+id/number_buttonY"
             android:layout_width="194dp"
             app:backGroundColor="@color/colorAccent"
-            app:textSize="12sp"
+            app:textSize="8sp"
             android:layout_marginStart="10dp"
             app:initialNumber="4"
             app:finalNumber="8"
