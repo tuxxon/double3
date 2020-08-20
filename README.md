@@ -16,14 +16,14 @@ This is a game where you get a higher score while making a multiple of 3.
 
 ### Screenshots
 
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/1.png">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/2.png">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/3.png">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/4.png">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/5.png">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/6.png">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/7.png">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/8.png">
+<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/1.jpg">
+<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/2.jpg">
+<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/3.jpg">
+<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/4.jpg">
+<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/5.jpg">
+<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/6.jpg">
+<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/7.jpg">
+<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/8.jpg">
 
 ### Codes
 
