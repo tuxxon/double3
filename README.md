@@ -24,15 +24,6 @@ This is a game where you get a higher score while making a multiple of 3.
 ![Screenshots7](https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/7.jpg)
 ![Screenshots8](https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/8.jpg)
 
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/1.jpg">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/2.jpg">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/3.jpg">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/4.jpg">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/5.jpg">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/6.jpg">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/7.jpg">
-<img src="https://raw.githubusercontent.com/tuxxon/double3/master/screenshots/8.jpg">
-
 ### Codes
 
 [Original code](https://github.com/gabrielecirulli/2048) (github.com)
