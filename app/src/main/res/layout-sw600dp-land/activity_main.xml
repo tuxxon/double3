@@ -10,8 +10,8 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:layout_centerInParent="true"
         android:orientation="vertical"
@@ -51,7 +51,7 @@
                 android:layout_width="194dp"
                 android:layout_marginStart="10dp"
                 app:backGroundColor="@color/colorPrimary"
-                app:textSize="8sp"
+                app:textSize="14sp"
                 app:initialNumber="4"
                 app:finalNumber="8"
                 android:layout_height="wrap_content" />
@@ -76,7 +76,7 @@
                 android:id="@+id/number_buttonY"
                 android:layout_width="194dp"
                 app:backGroundColor="@color/colorAccent"
-                app:textSize="8sp"
+                app:textSize="14sp"
                 android:layout_marginStart="10dp"
                 app:initialNumber="4"
                 app:finalNumber="8"
