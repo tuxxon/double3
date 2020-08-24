@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final String YOUTUBE_CHANNEL = "https://www.youtube.com/channel/UCHTNaLtro_1I6Y3SSywo3Cg";
     public static final String GOOGLE_PLAYSTORE = "http://play.google.com/store/apps/details?id=";
+    public static final String ONESTORE = "onestore://common/product/0000750446?view_type=1";
+    public static final String ONESTORE_URL = "https://www.onestore.co.kr/userpoc/game/view?pid=0000750446";
     public static final String MARKET_URI = "market://details?id=";
 
     public ElegantNumberButton numberButtonX;
@@ -175,19 +177,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void goToPlayStore() {
-        Uri uri = Uri.parse(MARKET_URI + getPackageName());
-        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-        // To count with Play market backstack, After pressing back button,
-        // to taken back to our application, we need to add following flags to intent.
-        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-        try {
-            startActivity(goToMarket);
-        } catch (ActivityNotFoundException e) {
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(GOOGLE_PLAYSTORE + getPackageName())));
+        if (Preferences.UPLOAD_STORE == Preferences.Store.GOOGLE_PLAY) {
+            Uri uri = Uri.parse(MARKET_URI + getPackageName());
+            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+            // To count with Play market backstack, After pressing back button,
+            // to taken back to our application, we need to add following flags to intent.
+            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            try {
+                startActivity(goToMarket);
+            } catch (ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(GOOGLE_PLAYSTORE + getPackageName())));
+            }
         }
+        else if (Preferences.UPLOAD_STORE == Preferences.Store.ONE_STORE) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            intent.setData(Uri.parse(ONESTORE));
+
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(ONESTORE_URL)));
+            }
+        }
+
     }
 
     public void goToYoutube() {
